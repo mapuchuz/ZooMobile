@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ZooMobile</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_login">Identifiant</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="action_sign_in">S\'identifier</string>
+    <string name="action_sign_in_short">S\'identifier</string>
+    <string name="error_invalid_email">Adresse mail invalide</string>
+    <string name="error_invalid_password">Mot de passe trop court</string>
+    <string name="error_incorrect_password">Mot de passe incorrect</string>
+    <string name="error_field_required">Veuillez remplir tous les champs</string>
+    <string name="permission_rationale">"Permission de contact nécessaire."
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
