@@ -67,7 +67,7 @@ public class Animal {
     }
 
     public String getName() {
-        return name;
+        return name + "toto";
     }
 
     public void setName(String name) {
