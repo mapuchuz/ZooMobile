@@ -1,20 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="8dp"
+    android:elevation="16dp"
+    app:cardCornerRadius="12dp">
 
-    <TextView
-        android:id="@+id/id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/animal_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:textAppearance="?attr/textAppearanceListItem" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/animal_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:text="nom de l'animal"
+            android:textColor="#eee"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:paddingLeft="8dp"/>
+
+        <TextView
+            android:id="@+id/animal_espece"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/animal_espece"
+            android:layout_toRightOf="@id/animal_espece"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:text="Espece de l'animal"
+            android:textColor="#ccc"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/animal_photo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/animal_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/animal_photo" />
+
+
+        <TextView
+            android:id="@+id/animal_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/animal_espece"
+            android:maxLines="3"
+            android:padding="8dp"
+            android:text="description de l'animal"
+            android:textColor="#666"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

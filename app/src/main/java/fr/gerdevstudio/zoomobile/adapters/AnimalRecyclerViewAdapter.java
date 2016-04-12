@@ -9,7 +9,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.gerdevstudio.zoomobile.R;
-import fr.gerdevstudio.zoomobile.datalayer.DummyAnimalContent;
 import fr.gerdevstudio.zoomobile.fragments.AnimalFragment;
 import fr.gerdevstudio.zoomobile.models.Animal;
 
@@ -37,9 +36,11 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mAnimal = mAnimals.get(position);
-        holder.mIdView.setText(Integer.toString(position));
-        holder.mNameView.setText(mAnimals.get(position).getName());
+        final Animal animal = mAnimals.get(position);
+        holder.mAnimalNameView.setText(animal.getName());
+        holder.mAnimalEspeceView.setText(animal.getEspece());
+        holder.mAnimalDescriptionView.setText(animal.getDescription());
+        //todo add image support
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +48,7 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onAnimalSelected(holder.mAnimal);
+                    mListener.onAnimalSelected(animal);
                 }
             }
         });
@@ -60,20 +61,22 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mNameView;
+        public final TextView mAnimalNameView;
+        public final TextView mAnimalEspeceView;
+        public final TextView mAnimalDescriptionView;
         public Animal mAnimal;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mNameView = (TextView) view.findViewById(R.id.animal_name);
+            mAnimalNameView = (TextView) view.findViewById(R.id.animal_name);
+            mAnimalEspeceView = (TextView) view.findViewById(R.id.animal_espece);
+            mAnimalDescriptionView = (TextView) view.findViewById(R.id.animal_description);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mNameView.getText() + "'";
+            return super.toString() + " '" + mAnimalEspeceView.getText() + "'";
         }
     }
 }

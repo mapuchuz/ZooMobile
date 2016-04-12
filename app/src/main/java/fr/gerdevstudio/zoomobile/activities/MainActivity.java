@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_animals) {
             showFragmentInContainer(AnimalFragment.newInstance(1));
         } else if (id == R.id.nav_enclos) {
-            showFragmentInContainer(EnclosFragment.newInstance(2));
+            showFragmentInContainer(EnclosFragment.newInstance(1));
 
         } else if (id == R.id.nav_share) {
         }
