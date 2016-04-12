@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import fr.gerdevstudio.zoomobile.models.Animal;
+
 /**
  * Created by human booster on 11/04/2016.
  */
@@ -18,6 +20,7 @@ public class AnimalDbHelper extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(AnimalContract.SQL_CREATE_ANIMALS);
+        db.execSQL(AnimalContract.SQL_POPULATE_ANIMALS);
     }
 
 

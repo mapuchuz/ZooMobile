@@ -26,6 +26,11 @@
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+    <provider android:name="fr.gerdevstudio.zoomobile.datalayer.AnimalProvider"
+        android:authorities="fr.gerdevstudio.zoomobile"
+        android:exported="false" />
+
     </application>
 
 </manifest>

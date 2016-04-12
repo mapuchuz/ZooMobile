@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import fr.gerdevstudio.zoomobile.adapters.AnimalRecyclerViewAdapter;
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.gerdevstudio.zoomobile.R;
-import fr.gerdevstudio.zoomobile.datalayer.DummyAnimalContent;
+import fr.gerdevstudio.zoomobile.adapters.AnimalRecyclerViewAdapter;
+import fr.gerdevstudio.zoomobile.datalayer.AnimalContent;
 import fr.gerdevstudio.zoomobile.models.Animal;
 
 /**
@@ -63,13 +66,25 @@ public class AnimalFragment extends Fragment {
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
+            final RecyclerView recyclerView = (RecyclerView) view;
             if (mColumnCount <= 1) {
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new AnimalRecyclerViewAdapter(DummyAnimalContent.ITEMS, mListener));
+
+            final List<Animal> animaux = new ArrayList<>();
+
+            AnimalContent content = new AnimalContent();
+            content.getAnimals(this, new AnimalContent.Callbacks() {
+                @Override
+                public void onGetAnimals(List<Animal> result) {
+                    animaux.addAll(result);
+                    recyclerView.getAdapter().notifyDataSetChanged();
+                }
+            });
+            recyclerView.setAdapter(new AnimalRecyclerViewAdapter(animaux, mListener));
+            //recyclerView.setAdapter(new AnimalRecyclerViewAdapter( null,               mListener));
         }
         return view;
     }
