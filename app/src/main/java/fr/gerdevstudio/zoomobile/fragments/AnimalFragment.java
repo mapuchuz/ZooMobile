@@ -79,8 +79,9 @@ public class AnimalFragment extends Fragment {
             content.getAnimals(this, new AnimalContent.Callbacks() {
                 @Override
                 public void onGetAnimals(List<Animal> result) {
+                    animaux.clear();
                     animaux.addAll(result);
-                    recyclerView.getAdapter().notifyDataSetChanged();
+                    if (recyclerView.getAdapter() != null) recyclerView.getAdapter().notifyDataSetChanged();
                 }
             });
             recyclerView.setAdapter(new AnimalRecyclerViewAdapter(animaux, mListener));

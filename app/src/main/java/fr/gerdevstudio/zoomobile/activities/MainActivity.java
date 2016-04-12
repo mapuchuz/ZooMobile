@@ -17,31 +17,42 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
+
 import fr.gerdevstudio.zoomobile.R;
 import fr.gerdevstudio.zoomobile.fragments.AnimalFragment;
 import fr.gerdevstudio.zoomobile.fragments.EnclosFragment;
 import fr.gerdevstudio.zoomobile.models.Animal;
 import fr.gerdevstudio.zoomobile.models.Enclos;
+import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, AnimalFragment.OnAnimalFragmentInteractionListener, EnclosFragment.OnEnclosInteractionListener{
+        implements NavigationView.OnNavigationItemSelectedListener, AnimalFragment.OnAnimalFragmentInteractionListener, EnclosFragment.OnEnclosInteractionListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(new View.OnClickListener()
+
+                               {
+                                   @Override
+                                   public void onClick(View view) {
+                                       Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                                               .setAction("Action", null).show();
+                                   }
+                               }
+
+        );
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -53,7 +64,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         // show animal fragment by default.
-        showFragmentInContainer(AnimalFragment.newInstance(1));
+        showFragmentInContainer(AnimalFragment.newInstance(1)
+
+        );
     }
 
     @Override
@@ -87,7 +100,10 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-    /** interfaces implementations */
+
+    /**
+     * interfaces implementations
+     */
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -117,8 +133,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void showFragmentInContainer(Fragment f)
-    {
+    private void showFragmentInContainer(Fragment f) {
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.fragment_container);
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();

@@ -15,6 +15,9 @@ import fr.gerdevstudio.zoomobile.models.Animal;
 public class AnimalProvider extends ContentProvider {
 
     public static final String AUTHORITY = "fr.gerdevstudio.zoomobile";
+    public static final Uri URI = Uri.parse("content://" + AnimalProvider.AUTHORITY + "/"
+            + AnimalContract.Animals.TABLE_NAME);
+
     private static final String BASE_PATH = AnimalContract.Animals.TABLE_NAME;
     private static final int ANIMAL_LIST = 0;
     private static final int ANIMAL_DETAILS = 1;
@@ -80,7 +83,7 @@ public class AnimalProvider extends ContentProvider {
     public void insert(Animal animal)
     {
         ContentValues values= new ContentValues();
-        values.put(AnimalContract.Animals.COLUMN_NAME_USER_ID, 1);
+        values.put(AnimalContract.Animals.COLUMN_NAME_ANIMAL_ID, 1);
         values.put(AnimalContract.Animals.COLUMN_NAME_NAME, animal.getName());
         values.put(AnimalContract.Animals.COLUMN_NAME_SPECIES, animal.getEspece());
 
