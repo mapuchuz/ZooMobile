@@ -11,8 +11,8 @@ Valid attributes on <screen> tag: theme="@style/someTheme" inEditMode="false" ov
         <animal_espece text="Text literal" textSize="14sp" /> -->
         <animal_espece />
         <!-- ImageView Examples:
-        <animal_photo src="@drawable/image_resource" />
-        <animal_photo src="relative_path/image.jpg" /> -->
+        <chien_photo src="@drawable/image_resource" />
+        <chien_photo src="relative_path/image.jpg" /> -->
         <animal_photo />
         <animal_name />
         <animal_description />
