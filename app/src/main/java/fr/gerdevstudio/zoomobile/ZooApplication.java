@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
 
@@ -27,11 +28,14 @@ public class ZooApplication extends Application {
 
         Intent intent = new Intent(this, GetAllAnimalsService.class);
         startService(intent);
-        bindService(intent, new ServiceConnection() {
+        final boolean b = bindService(intent, new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
                 GetAllAnimalsService service = (GetAllAnimalsService) iBinder;
-                Log.d("",service.resultFromApiCall);
+                Toast.makeText(
+                        getApplicationContext()
+                        , "retour webservoce: " + service.resultFromApiCall
+                        , Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -41,3 +45,4 @@ public class ZooApplication extends Application {
         }, BIND_AUTO_CREATE);
     }
 }
+
