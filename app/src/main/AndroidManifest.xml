@@ -7,8 +7,10 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <!-- allow us to get infos from web (and our zoo web-service -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- name of application calls custom application class, with stetho support-->
+    <!-- name of application calls custom application class, with stetho support -->
     <application
         android:name=".ZooApplication"
         android:allowBackup="true"
@@ -28,13 +30,17 @@
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-    <provider android:name="fr.gerdevstudio.zoomobile.datalayer.AnimalProvider"
-        android:authorities="fr.gerdevstudio.zoomobile"
-        android:exported="false" />
+        <provider
+            android:name=".datalayer.AnimalProvider"
+            android:authorities="fr.gerdevstudio.zoomobile"
+            android:exported="false" />
 
+        <service
+            android:name=".GetAllAnimalsService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
