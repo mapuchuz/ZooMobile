@@ -84,7 +84,7 @@ public class AnimalFragment extends Fragment {
                     if (recyclerView.getAdapter() != null) recyclerView.getAdapter().notifyDataSetChanged();
                 }
             });
-            recyclerView.setAdapter(new AnimalRecyclerViewAdapter(animaux, mListener));
+            recyclerView.setAdapter(new AnimalRecyclerViewAdapter(this.getContext(), animaux, mListener));
             //recyclerView.setAdapter(new AnimalRecyclerViewAdapter( null,               mListener));
         }
         return view;

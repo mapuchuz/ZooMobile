@@ -89,7 +89,8 @@ public class AnimalContent implements LoaderManager.LoaderCallbacks<Cursor> {
     public void onLoadFinished(Loader loader, Cursor cursor) {
         for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             Animal animal = new Animal(cursor.getString(cursor.getColumnIndex((AnimalContract.Animals.COLUMN_NAME_NAME))),
-                    cursor.getString(cursor.getColumnIndex((AnimalContract.Animals.COLUMN_NAME_SPECIES))));
+                    cursor.getString(cursor.getColumnIndex((AnimalContract.Animals.COLUMN_NAME_SPECIES))),
+                    cursor.getString(cursor.getColumnIndex((AnimalContract.Animals.COLUMN_NAME_PHOTO))));
             ITEMS.add(animal);
             ITEM_MAP.put(cursor.getInt(cursor.getColumnIndex(AnimalContract.Animals._ID)), animal);
         }

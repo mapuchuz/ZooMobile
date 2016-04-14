@@ -1,9 +1,11 @@
 package fr.gerdevstudio.zoomobile.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -21,10 +23,12 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
 
     private final List<Animal> mAnimals;
     private final AnimalFragment.OnAnimalFragmentInteractionListener mListener;
+    private Context context;
 
-    public AnimalRecyclerViewAdapter(List<Animal> items, AnimalFragment.OnAnimalFragmentInteractionListener listener) {
+    public AnimalRecyclerViewAdapter(Context context,List<Animal> items, AnimalFragment.OnAnimalFragmentInteractionListener listener) {
         mAnimals = items;
         mListener = listener;
+        this.context=context;
     }
 
     @Override
@@ -40,6 +44,9 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
         holder.mAnimalNameView.setText(animal.getName());
         holder.mAnimalEspeceView.setText(animal.getEspece());
         holder.mAnimalDescriptionView.setText(animal.getDescription());
+        if (animal.getPhoto()!=null) {
+            holder.mAnimalPhotoImageView.setImageResource(context.getResources().getIdentifier("drawable/"+animal.getPhoto(),null,context.getPackageName()));
+        }
         //todo add image support
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +71,7 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
         public final TextView mAnimalNameView;
         public final TextView mAnimalEspeceView;
         public final TextView mAnimalDescriptionView;
+        public final  ImageView mAnimalPhotoImageView;
         public Animal mAnimal;
 
         public ViewHolder(View view) {
@@ -72,6 +80,8 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
             mAnimalNameView = (TextView) view.findViewById(R.id.animal_name);
             mAnimalEspeceView = (TextView) view.findViewById(R.id.animal_espece);
             mAnimalDescriptionView = (TextView) view.findViewById(R.id.animal_description);
+            mAnimalPhotoImageView = (ImageView) view.findViewById(R.id.animal_photo);
+
         }
 
         @Override
